@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+  color: white;
+  background: rgb(103, 34, 128);
+  background: linear-gradient(
+    90deg,
+    rgba(103, 34, 128, 1) 0%,
+    rgba(166, 38, 211, 1) 100%
+  );
+  box-shadow: 1px 1px 1px rgb(103, 34, 128);
+}
+
+.header--title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.header--title > img {
+  max-height: 28px;
+}
