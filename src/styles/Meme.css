@@ -42,3 +42,7 @@
     rgba(166, 38, 211, 1) 100%
   );
 }
+
+.meme--image {
+  max-width: 80vw;
+}
