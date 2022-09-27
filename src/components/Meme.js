@@ -11,6 +11,16 @@ const Meme = () => {
 
   const [allMemeImages] = React.useState(memesData)
 
+  function handleChange(event) {
+    const {name, value} = event.target
+    setMeme(prevState => {
+      return {
+        ...prevState,
+        [name]: value
+      }
+    })
+  }
+
   function buttonClicked() {
     const memesArray = allMemeImages.data.memes;
     const randIndex = Math.floor(Math.random() * memesArray.length); // Number between 0 and 100
@@ -26,11 +36,15 @@ const Meme = () => {
   return (
     <div className="meme--form">
       <div className="form--cont">
-        <input type="text" placeholder="TOP TEXT" />
-        <input type="text" placeholder="BOTTOM TEXT" />
+        <input type="text" placeholder="TOP TEXT" name="topText" value={meme.topText} onChange={handleChange} />
+        <input type="text" placeholder="BOTTOM TEXT" name="bottomText" value={meme.bottomText} onChange={handleChange} />
       </div>
       <button onClick={buttonClicked}>Get a new meme image</button>
-      <img src={meme.randomImage} className='meme--image' alt=''></img>
+      <div className="meme">
+        <img src={meme.randomImage} className='meme--image' alt=''></img>
+        <h2 className="meme--text top">{meme.topText}</h2>
+        <h2 className="meme--text bottom">{meme.bottomText}</h2>
+      </div>
     </div>
   );
 };
