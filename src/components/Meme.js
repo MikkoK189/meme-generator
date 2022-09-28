@@ -1,15 +1,21 @@
 import "../styles/Meme.css";
 import memesData from "../memesData";
-import React from "react";
+import { React, useEffect, useState} from "react";
 
 const Meme = () => {
-  const [meme, setMeme] = React.useState({
+  const [meme, setMeme] = useState({
     topText : '',
     bottomText : '',
     randomImage : 'http://i.imgflip.com/1bij.jpg'
   })
 
-  const [allMemeImages] = React.useState(memesData)
+  const [allMemeImages, setAllMemeImages] = useState({memesData})
+
+  useEffect(() => {
+    fetch('https://api.imgflip.com/get_memes')
+    .then(response => response.json())
+    .then(data => setAllMemeImages(data)) 
+  }, [])
 
   function handleChange(event) {
     const {name, value} = event.target
